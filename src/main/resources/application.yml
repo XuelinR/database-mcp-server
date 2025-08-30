@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: database-mcp-server
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.xuelinr.database_mcp_server: INFO
+    root: WARN
+
+# 数据库连接池配置
+spring.datasource.hikari:
+  maximum-pool-size: 20
+  minimum-idle: 5
+  connection-timeout: 30000
+
+# SpringDoc OpenAPI 配置
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# 注意：此应用不依赖于固定的数据库连接
+# 数据库连接信息通过API动态传入
+# 如果需要默认数据库连接，可以在对应环境配置文件中配置
